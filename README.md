@@ -1,1 +1,2 @@
-# kma_reviews
+# KMA Reviews 
+## Frontend part of group project 
