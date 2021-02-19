@@ -14,15 +14,19 @@
 </template>
 
 <script>
-    import {mapState} from "vuex";
-    import reviews from "../store/modules/reviews";
+    import Vuex from "vuex";
+    import Reviews from "../store/modules/reviews";
 
     export default {
-        computed: mapState({
-            reviews: state => state.reviews.reviews,
+        computed: Vuex.mapState({
+            reviews: state => state.reviews.all,
         }),
+        methods:{
+            ...Vuex.mapActions(['getReviews'])
+        },
+
         created () {
-            this.$store.dispatch('reviews/getReviews')
+            this.$store.dispatch("reviews/getReviews")
         },
         name: "ReviewItems"
     }

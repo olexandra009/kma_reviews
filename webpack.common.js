@@ -3,10 +3,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+require('babel-polyfill');
 
 module.exports = {
     entry: {
-        app: './src/index.js',
+        app: ['babel-polyfill', './src/index.js']
     },
     module: {
         rules: [
