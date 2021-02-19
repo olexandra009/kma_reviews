@@ -4,7 +4,10 @@ import teacher from "../store/modules/teacher";
 
 export default {
     async getPagedReviews(page){
-          return Vue.$http.get(baseApi.getReviews, {params: {page: page}})},
+          console.log("Here we are in getPagedReviews");
+          let res = Vue.$http.get(baseApi.getReviews, {params: {page: page}});
+          console.log(res);
+          return res},
 
     getPagedReviewsByTeacher: (page, teacherId)=>
         Vue.$http.get(baseApi.getReviews, {params: {page: page, teacherId: teacherId}}),

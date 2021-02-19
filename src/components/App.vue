@@ -7,7 +7,7 @@
             </b-navbar-nav>
         </b-navbar>
         <review-items/>
-
+        <div>"STOP"</div>
     </b-container>
 </template>
 

@@ -1,4 +1,5 @@
 import userApi from "../../api/userApi";
+import baseApi from "../../api/apiUrl";
 const state = () => ({reviews: [], currentPage: -1, totalPages: 0, facId: null, techId: null});
 
 const getters = {
@@ -7,8 +8,9 @@ const getters = {
 
 const action = {
     async getReviews({commit}, {teacher_id, faculty_id}){
-        let response = await userApi.getPagedReviews(state.currentPage+1);
+        let response = await Vue.http.get(baseApi.getReviews, {params: {page: state.currentPage+1}});;
         const data = await response.json();
+        console.log(data);
         state.facId = faculty_id;
         state.techId = teacher_id;
         state.totalPages =  data.totalPages;
