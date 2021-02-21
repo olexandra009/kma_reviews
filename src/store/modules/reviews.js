@@ -15,8 +15,7 @@ const actions = {
     async getReviews({commit, state}){
         let response = await userApi.getPagedReviews(state.currentPage+1);
         console.log(response);
-        const dataString = await response.json();
-        const data = JSON.parse(dataString);
+        const data = await response.json();
        //change faculty
         // change teacher
         state.totalPages =  data.totalPages;

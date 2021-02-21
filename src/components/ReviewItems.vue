@@ -9,14 +9,18 @@
                 </b-card-body>
             </b-card>
         </b-row>
+        <review-loader></review-loader>
     </b-container>
 </template>
 
 <script>
     import Vuex from "vuex";
+    import ReviewLoader from "./ReviewLoader.vue";
     import Reviews from "../store/modules/reviews";
 
+
     export default {
+        components: {ReviewLoader},
         computed: Vuex.mapState({
             reviews: state => state.reviews.all,
         }),
