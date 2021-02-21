@@ -6,16 +6,16 @@
                 <h1 class="p-3 text-light">Чесні відгуки на викладачів НаУКМА</h1>
             </b-navbar-nav>
         </b-navbar>
-        <review-items/>
+        <body-display/>
 
     </b-container>
 </template>
 
 <script>
-    import ReviewItems from "./ReviewItems.vue";
+    import BodyDisplay from "./BodyDisplay.vue";
     export default {
         name: "App",
-        components: {ReviewItems},
+        components: {BodyDisplay},
     }
 </script>
 

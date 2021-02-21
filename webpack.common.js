@@ -1,7 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 require('babel-polyfill');
 
@@ -21,14 +21,14 @@ module.exports = {
                     }
                 }
             },
-            {
+           /* {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
                 ],
-            },
+            },*/
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
@@ -44,9 +44,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin({
+      /*  new MiniCssExtractPlugin({
             filename: "css/[name].css",
-        }),
+        }),*/
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
     ],
