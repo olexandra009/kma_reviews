@@ -1,4 +1,5 @@
-const baseUrl = "https://kma-review-system.herokuapp.com/";
+//const baseUrl = "https://kma-review-system.herokuapp.com/";
+const baseUrl = "http://localhost:8888";
 
 const getReviews = baseUrl+"/review/pageable";
 

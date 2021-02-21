@@ -5,30 +5,30 @@ import Vue from "vue";
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
 
-const state = () => ({all: [], currentPage: -1, totalPages: 0, facId: 1, techId: 1});
+const state = () => ({all: [], currentPage: -1, totalPages: 0, facId: null, techId: null});
 
 const getters = {
     //create getters from store for review
 };
 
 const actions = {
-    async getReviews({commit}){
-        let response = await Vue.http.get(baseApi.getReviews, {params: {page: 0},
-        //    headers: baseApi.header
-        });;
-        const data = await response.json();
-        console.log(data);
-        //state.facId = faculty_id;
-        //state.techId = teacher_id;
+    async getReviews({commit, state}){
+        let response = await userApi.getPagedReviews(state.currentPage+1);
+        console.log(response);
+        const dataString = await response.json();
+        const data = JSON.parse(dataString);
+       //change faculty
+        // change teacher
         state.totalPages =  data.totalPages;
         state.currentPage =  Math.min(data.currentPage, data.totalPages - 1);
         commit('getReviewPageMutation', data.reviews)
     }
 };
 
+
 const mutations ={
     getReviewPageMutation(state, reviews){
-        const  targetReviews = state.reviews.concat(reviews);
+        const  targetReviews = state.all.concat(reviews);
         state.all = [];
         let d = {};
         for(let r of targetReviews) {
