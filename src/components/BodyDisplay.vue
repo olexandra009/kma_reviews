@@ -6,7 +6,7 @@
             </b-row>
 
             <b-collapse id="input_collapse">
-               <!-- <input-form></input-form>-->
+                <form-for-review class="mb-4"/>
             </b-collapse>
 
         </b-container>
@@ -21,7 +21,6 @@
               <b-col lg="4" class="d-none d-lg-block">
                   <b-container>
                       <form-for-review class="mb-4"/>
-
                   </b-container>
             </b-col>
         </b-row>

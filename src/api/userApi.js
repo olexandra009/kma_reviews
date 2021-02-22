@@ -27,6 +27,11 @@ export default {
         return res;
     },
 
-
+    async postNewReview(message){
+        console.log("IN API");
+        console.log(message);
+        let res = await Vue.http.post(baseApi.postReview, message,{param: {headers: baseApi.header}});
+        return res;
+    }
 
 }

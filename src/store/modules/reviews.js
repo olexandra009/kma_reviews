@@ -12,6 +12,23 @@ const getters = {
 };
 
 const actions = {
+    async addReviewAction({commit, state}, {review}) {
+        console.log("IN ACTION:: ")
+        console.log(review);
+        let result = await userApi.postNewReview(review);
+        console.log(result);
+        const data = await result.json();
+        console.log(data);
+        let notAdd =  state.techId
+            && data.teacher.id !== state.techId
+            || state.facId
+            && state.facId !== data.teacher.faculty.id;
+         if(!notAdd ) {
+             commit('addReviewMutation', data);
+             return true;
+         }
+         return false;
+    },
     resetPages({commit}){
         commit('resetPageMutation');
     },
@@ -35,6 +52,13 @@ const actions = {
 
 
 const mutations ={
+    addReviewMutation(state, review){
+        state.all = [
+            review,
+            ...state.all
+
+        ]
+    },
     resetPageMutation(state){
         state.totalPages = 0;
         state.currentPage = -1;

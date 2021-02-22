@@ -19,12 +19,12 @@
             teacherOptions: state=> {
                 let ops = state.teachers.teacher;
                 let res = ops.reduce((acc, x) => [...acc,{text: x.name, value: x.id}] , [{text: 'Оберіть викладача', value:null}]);
-                return res;
+                return res.sort((a, b) => -(a.id - b.id));
             },
             facultyOptions: state=>{
                 let ops = state.faculty.faculty;
                 let res = ops.reduce((acc, x) => [...acc,{text: x.name, value: x.id}] , [{text: 'Оберіть факультет', value:null}]);
-                return res;
+                return res.sort((a, b) => -(a.id - b.id));
             }
         }),
         methods:{
