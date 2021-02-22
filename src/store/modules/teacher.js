@@ -12,9 +12,7 @@ const getters = {
 };
 const actions = {
     async getTeacherList({commit, state}){
-        console.log("In action running");
         let response = await userApi.getListOfAllTeacher();
-        console.log(response);
         const data = await response.json();
         commit('getTeacherListMutation', data);
     }

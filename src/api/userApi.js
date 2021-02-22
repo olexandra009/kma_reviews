@@ -22,6 +22,10 @@ export default {
         return res;
     },
 
+    async getListOfAllFaculty(){
+        let res = await Vue.http.get(baseApi.getAllFaculty);
+        return res;
+    },
 
 
 
