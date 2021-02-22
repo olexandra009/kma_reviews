@@ -12,7 +12,7 @@ export default {
         return res},
 
     getPagedReviewsByTeacher: (page, teacherId)=>
-        Vue.http.get(baseApi.getReviews, {params: {page: page, teacherId: teacherId}}),
+        Vue.http.get(baseApi.getReviews, {params: {page: page, teacher_id: teacherId}}),
 
     getPagedReviewsByFaculty: (page, facultyId)=>
         Vue.http.get(baseApi.getReviews, {params: {page:page, facultyId:facultyId}}),

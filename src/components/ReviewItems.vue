@@ -23,12 +23,16 @@
         components: {ReviewLoader},
         computed: Vuex.mapState({
             reviews: state => state.reviews.all,
+            teacherId: state=>state.reviews.techId,
+            facultyId: state => state.reviews.facId
+
         }),
         methods:{
             ...Vuex.mapActions(['getReviews'])
         },
-        mounted () {
-            this.$store.dispatch("reviews/getReviews")
+        mounted() {
+            this.$store.dispatch("reviews/getReviews", {'teacherId': this.teacherId,
+                'facultyId': this.facultyId})
         },
         name: "ReviewItems"
     }

@@ -12,12 +12,21 @@ const getters = {
 };
 
 const actions = {
-    async getReviews({commit, state}){
-        let response = await userApi.getPagedReviews(state.currentPage+1);
+    resetPages({commit}){
+        commit('resetPageMutation');
+    },
+    async getReviews({commit, state}, {teacherId, facultyId}){
+        let response;
+        if(teacherId) response = await userApi.getPagedReviewsByTeacher(state.currentPage+1, teacherId);
+        else if(facultyId) response = await userApi.getPagedReviewsByFaculty(state.currentPage+1, facultyId);
+        else response = await userApi.getPagedReviews(state.currentPage+1);
         console.log(response);
         const data = await response.json();
        //change faculty
         // change teacher
+        if(teacherId) state.techId = teacherId;
+        else if (facultyId) state.facId = facultyId;
+
         state.totalPages =  data.totalPages;
         state.currentPage =  Math.min(data.currentPage, data.totalPages - 1);
         commit('getReviewPageMutation', data.reviews)
@@ -26,6 +35,11 @@ const actions = {
 
 
 const mutations ={
+    resetPageMutation(state){
+        state.totalPages = 0;
+        state.currentPage = -1;
+        state.all = [];
+    },
     getReviewPageMutation(state, reviews){
         const  targetReviews = state.all.concat(reviews);
         state.all = [];

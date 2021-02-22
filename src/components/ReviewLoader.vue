@@ -7,6 +7,10 @@
 
     export default {
         name: "ReviewLoader",
+        computed: Vuex.mapState({
+            teacherId: state=>state.reviews.techId,
+            facultyId: state => state.reviews.facId
+        }),
         methods:{
             ...Vuex.mapActions(['getReviews'])
         },
@@ -15,7 +19,8 @@
                 const el = document.documentElement
                 const isBottomOfScreen = el.scrollTop + window.innerHeight  >  el.offsetHeight - 10
                 if (isBottomOfScreen) {
-                    this.$store.dispatch('reviews/getReviews');
+                    this.$store.dispatch("reviews/getReviews", {'teacherId': this.teacherId,
+                        'facultyId': this.facultyId});
                 }
             }
         },
