@@ -27,7 +27,6 @@
         methods:{
             ...Vuex.mapActions(['getReviews'])
         },
-
         mounted () {
             this.$store.dispatch("reviews/getReviews")
         },

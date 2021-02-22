@@ -31,7 +31,7 @@
 
 <script>
     export default {
-        name: "FormForReview"
+        name: "FormForReview",
     }
 </script>
 

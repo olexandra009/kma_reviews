@@ -36,7 +36,7 @@
     import FilterForm from "./FilterForm.vue";
     export default {
         components: {ReviewItems, QuestionList, FormForReview,FilterForm},
-        name: "BodyDisplay"
+        name: "BodyDisplay",
     }
 </script>
 

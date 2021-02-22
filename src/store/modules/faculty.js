@@ -1,12 +1,14 @@
 const state = {faculty: []};
 const getters = {};
-const action = {};
+const action = {
+
+};
 const mutation = {};
 
 export default {
     namespaced: true,
-    state,
-    getters,
-  //  actions,
-   // mutations
+    state: state,
+    getters: getters,
+    actions: action,
+    mutations: mutation,
 };

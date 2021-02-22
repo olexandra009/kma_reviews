@@ -11,5 +11,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     modules:{
         reviews: reviews,
+        teachers: teacher,
     }
 });

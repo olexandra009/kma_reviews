@@ -15,6 +15,14 @@ export default {
         Vue.http.get(baseApi.getReviews, {params: {page: page, teacherId: teacherId}}),
 
     getPagedReviewsByFaculty: (page, facultyId)=>
-        Vue.http.get(baseApi.getReviews, {params: {page:page, facultyId:facultyId}})
+        Vue.http.get(baseApi.getReviews, {params: {page:page, facultyId:facultyId}}),
+
+    async getListOfAllTeacher(){
+        let res = await Vue.http.get(baseApi.getAllTeacher);
+        return res;
+    },
+
+
+
 
 }

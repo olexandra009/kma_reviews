@@ -2,6 +2,8 @@
 const baseUrl = "http://localhost:8888";
 
 const getReviews = baseUrl+"/review/pageable";
+const getAllTeacher = baseUrl+"/teacher/all";
+const getAllFaculty = baseUrl +"/faculty/all";
 
 const header = {
     "Access-Control-Allow-Origin": "*",
@@ -11,6 +13,8 @@ const header = {
 
 
 export default {
+    getAllTeacher,
+    getAllFaculty,
     getReviews,
     header
 }
