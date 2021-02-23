@@ -61,18 +61,12 @@
                 this.selectedTeacher = null;
                 this.review = null;
 
-                if(bol=== true)
-                    this.$bvToast.toast('Відгук було відправлено', {
-                        title: `Успіх`,
-                        variant: 'success',
-                        solid: true
-                    });
-                else
-                    this.$bvToast.toast('Відгук не відправлено', {
-                        title: `Невдача`,
-                        variant: 'error',
-                        solid: true
-                    });
+                this.$bvToast.toast('Відгук було відправлено', {
+                    title: `Успіх`,
+                    variant: 'success',
+                    solid: true
+                });
+
             },
             ResetReview: function(event){
                 this.selectedTeacher = null;

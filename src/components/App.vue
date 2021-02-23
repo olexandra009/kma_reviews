@@ -11,7 +11,7 @@
                 <b-navbar-toggle target="nav-collapse"/>
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav class="ml-auto">
-                        <b-nav-item class="p-3" ><router-link class="text-light" to="/info">Інформація про проект</router-link></b-nav-item>
+                        <b-nav-item class="p-3" ><router-link class="text-light" to="/info"><b-icon icon="info-circle" scale="2,5" variant="light"></b-icon></router-link></b-nav-item>
                     </b-navbar-nav>
                 </b-collapse>
 

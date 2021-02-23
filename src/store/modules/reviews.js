@@ -19,11 +19,11 @@ const actions = {
         console.log(result);
         const data = await result.json();
         console.log(data);
-        let notAdd =  state.techId
+        let notAddToCurrent =  state.techId
             && data.teacher.id !== state.techId
             || state.facId
             && state.facId !== data.teacher.faculty.id;
-         if(!notAdd ) {
+         if(!notAddToCurrent ) {
              commit('addReviewMutation', data);
              return true;
          }
