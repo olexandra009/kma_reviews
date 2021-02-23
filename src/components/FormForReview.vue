@@ -51,7 +51,6 @@
         methods:{
             SubmitReview:
                 async function(event){
-                //  evt.preventDefault;
                 const review = {
                     text : this.review,
                     teacher: this.selectedTeacher,
@@ -76,7 +75,6 @@
                     });
             },
             ResetReview: function(event){
-                //evt.preventDefault();
                 this.selectedTeacher = null;
                 this.review = null;
             },}

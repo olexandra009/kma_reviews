@@ -5,12 +5,14 @@ import Vuex from "vuex";
 //import {BootstrapVue} from "bootstrap-vue";
 import VueRouter from "vue-router";
 import ReviewItems from "./components/ReviewItems.vue";
-
+import BodyDisplay from "./components/BodyDisplay.vue";
+import InformationDisplay from "./components/InformationDisplay.vue";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
@@ -19,9 +21,10 @@ Vue.use(IconsPlugin);
 
 const router = new VueRouter( {
     routes: [
-        { path: '/', component: ReviewItems },
-        { path: '/teacher/:teacher_id', component: ReviewItems },
-        { path: '/faculty/:faculty_id', component: ReviewItems },
+        { path: '/', component: BodyDisplay },
+        { path: '/teacher/:teacher_id', component: BodyDisplay },
+        { path: '/faculty/:faculty_id', component: BodyDisplay },
+        { path: '/info', component: InformationDisplay}
 
     ]
 });
