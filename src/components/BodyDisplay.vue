@@ -21,6 +21,7 @@
               <b-col lg="4" class="d-none d-lg-block">
                   <b-container>
                       <form-for-review class="mb-4"/>
+                      <form-for-problem/>
                   </b-container>
             </b-col>
         </b-row>
