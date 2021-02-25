@@ -4,6 +4,7 @@ import teacher from "../store/modules/teacher";
 
 import Vue from "vue";
 import VueResource from 'vue-resource';
+import axios from "axios";
 Vue.use(VueResource);
 
 export default {
@@ -15,7 +16,7 @@ export default {
         Vue.http.get(baseApi.getReviews, {params: {page: page, teacher_id: teacherId}}),
 
     getPagedReviewsByFaculty: (page, facultyId)=>
-        Vue.http.get(baseApi.getReviews, {params: {page:page, facultyId:facultyId}}),
+        Vue.http.get(baseApi.getReviews, {params: {page:page, faculty_id:facultyId}}),
 
     async getListOfAllTeacher(){
         let res = await Vue.http.get(baseApi.getAllTeacher);
@@ -30,8 +31,9 @@ export default {
     async postNewReview(message){
         console.log("IN API");
         console.log(message);
-        let res = await Vue.http.post(baseApi.postReview, message,{param: {headers: baseApi.header}});
-        return res;
+        let options = { emulateJSON: true };
+        let res = await Vue.http.post(baseApi.postReview,  message, options);
+      return res;
     }
 
 }

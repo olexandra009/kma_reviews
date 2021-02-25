@@ -34,8 +34,9 @@
     import QuestionList from "./QuestionList.vue";
     import FormForReview from "./FormForReview.vue";
     import FilterForm from "./FilterForm.vue";
+    import FormForProblem from "./FormForProblem.vue";
     export default {
-        components: {ReviewItems, QuestionList, FormForReview,FilterForm},
+        components: {ReviewItems, QuestionList, FormForReview,FilterForm, FormForProblem},
         name: "BodyDisplay",
     }
 </script>

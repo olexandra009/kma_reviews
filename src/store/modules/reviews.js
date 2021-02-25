@@ -41,8 +41,8 @@ const actions = {
         const data = await response.json();
        //change faculty
         // change teacher
-        if(teacherId) state.techId = teacherId;
-        else if (facultyId) state.facId = facultyId;
+        state.techId = teacherId;
+        state.facId = facultyId;
 
         state.totalPages =  data.totalPages;
         state.currentPage =  Math.min(data.currentPage, data.totalPages - 1);
