@@ -13,7 +13,7 @@ const getters = {
 
 const actions = {
     async addReviewAction({commit, state}, {review}) {
-        console.log("IN ACTION:: ")
+        console.log("IN ACTION:: ");
         console.log(review);
         let result = await userApi.postNewReview(review);
         console.log(result);

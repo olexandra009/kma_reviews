@@ -4,14 +4,18 @@ import store from "./store/store.js";
 import Vuex from "vuex";
 //import {BootstrapVue} from "bootstrap-vue";
 import VueRouter from "vue-router";
-import ReviewItems from "./components/ReviewItems.vue";
-import BodyDisplay from "./components/BodyDisplay.vue";
-import InformationDisplay from "./components/InformationDisplay.vue";
+import ReviewItems from "./components/main-module/ReviewItems.vue";
+import BodyDisplay from "./components/main-module/BodyDisplay.vue";
+import InformationDisplay from "./components/information-module/InformationDisplay.vue";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Login from "./components/login-sinup-module/Login.vue";
+import LoginDisplay from "./components/login-sinup-module/LoginDisplay.vue";
+import SingUp from "./components/login-sinup-module/SingUp.vue";
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 
 
 Vue.use(BootstrapVue);
@@ -24,8 +28,12 @@ const router = new VueRouter( {
         { path: '/', component: BodyDisplay },
         { path: '/teacher/:teacher_id', component: BodyDisplay },
         { path: '/faculty/:faculty_id', component: BodyDisplay },
-        { path: '/info', component: InformationDisplay}
-
+        { path: '/info', component: InformationDisplay},
+        { path: '/login', component: LoginDisplay,
+            children:[
+                {path: '/', component: Login},
+                {path: '/singup', component: SingUp}
+            ]},
     ]
 });
 

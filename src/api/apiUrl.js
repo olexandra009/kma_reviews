@@ -1,7 +1,8 @@
-//const baseUrl = "https://kma-review-system.herokuapp.com/";
-const baseUrl = "http://localhost:8888";
 
-const getReviews = baseUrl+"/review/pageable";
+//const baseUrl = "http://localhost:8888";
+const baseUrl = "https://kma-review-server.herokuapp.com";
+
+const getReviews = baseUrl+"/review/all";
 const getAllTeacher = baseUrl+"/teacher/all";
 const getAllFaculty = baseUrl +"/faculty/all";
 const postReview =baseUrl + "/review";
@@ -15,6 +16,8 @@ const header = {
 
 
 export default {
+
+    baseUrl,
     postReview,
     getAllTeacher,
     getAllFaculty,

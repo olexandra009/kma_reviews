@@ -11,7 +11,11 @@
                 <b-navbar-toggle target="nav-collapse"/>
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav class="ml-auto">
-                        <b-nav-item class="p-3" ><router-link class="text-light" to="/info"><b-icon icon="info-circle" scale="2,5" variant="light"></b-icon></router-link></b-nav-item>
+                        <b-nav-item class="p-3" ><router-link class="text-light" to="/info"><b-icon icon="info-circle" scale="2,5" variant="light"/></router-link></b-nav-item>
+                        <b-nav-item to="/login" class="p-3">
+                            <b-icon icon="box-arrow-in-right" scale="2,5" variant="light"/>
+                            <div>Вхід</div>
+                        </b-nav-item>
                     </b-navbar-nav>
                 </b-collapse>
 
@@ -22,7 +26,7 @@
 </template>
 
 <script>
-    import BodyDisplay from "./BodyDisplay.vue";
+    import BodyDisplay from "./main-module/BodyDisplay.vue";
     export default {
         name: "App",
         components: {BodyDisplay},

@@ -13,8 +13,8 @@ const getters = {
 const actions = {
     async getTeacherList({commit, state}){
         let response = await userApi.getListOfAllTeacher();
-        const data = await response.json();
-        commit('getTeacherListMutation', data);
+        //const data = await response.json();
+        commit('getTeacherListMutation', response);
     }
 };
 const mutations = {
