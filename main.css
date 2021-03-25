@@ -11,3 +11,12 @@
     font-weight: bold;
 
 }
+
+.admin-button{
+    font-size: 0.8em;
+    height: fit-content;
+}
+
+.review-card .card-body{
+    padding-top: 5px;
+}

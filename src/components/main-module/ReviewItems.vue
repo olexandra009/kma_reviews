@@ -1,8 +1,12 @@
 <template>
-    <b-container class="p-0 m-0" >
+    <b-container class="p-0 m-0 mt-2" >
         <b-row class="mb-2" v-for="review in reviews" :key="review.id" :review="review">
-            <b-card class="bg-light"  style="width: 100%">
+            <b-card class="bg-light review-card"  style="width: 100%">
                 <b-card-body>
+                    <div v-if="adminZone" class="d-flex justify-content-end row mb-2">
+                        <b-button variant="outline-info" class="admin-button mr-1" @click="deleteReview(review.id)">Видалити відгук</b-button>
+                        <b-button variant="outline-primary" class="admin-button">Заблокувати автора</b-button>
+                    </div>
                     <b-card-title>{{review.teacher.name}}</b-card-title>
                     <b-card-sub-title>{{ getDate(review.sendTime)}}</b-card-sub-title>
                     <b-card-text>{{ review.text }}</b-card-text>
@@ -33,10 +37,31 @@
                 let d = new Date(str+"Z");
                 return d.toLocaleString();
             },
+           async deleteReview(id){
+                let r = await this.$store.dispatch("reviews/deleteReviewAction", {'id':id});
+                if(!r) this.$bvToast.toast('Відгук не було видалено', {
+                    title: `Помилка`,
+                    variant: 'danger',
+                    solid: true
+                });
+                else this.$bvToast.toast('Відгук успішно видалено', {
+                    title: `Успіх`,
+                    variant: 'success',
+                    solid: true
+                });
+            }
         },
         mounted() {
             this.$store.dispatch("reviews/getReviews", {'teacherId': this.teacherId,
-                'facultyId': this.facultyId})
+                'facultyId': this.facultyId});
+           if(this.$route.fullPath==='/admin'){
+            this.adminZone = true;
+           }
+        },
+        data(){
+           return{
+               adminZone: false,
+           }
         },
         name: "ReviewItems"
     }

@@ -3,6 +3,7 @@ import baseApi from "../../api/apiUrl";
 
 import Vue from "vue";
 import VueResource from 'vue-resource';
+import adminApi from "../../api/adminApi";
 Vue.use(VueResource);
 
 const state = () => ({all: [], currentPage: -1, totalPages: 0, facId: null, techId: null});
@@ -24,6 +25,12 @@ const actions = {
              return true;
          }
          return false;
+    },
+    async deleteReviewAction({commit, state}, {id}){
+        let response = await adminApi.deleteReview(id);
+        if(response===false) return false;
+        commit('deleteReviewMutation', id);
+        return true;
     },
     resetPages({commit}){
         commit('resetPageMutation');
@@ -61,6 +68,11 @@ const mutations ={
         state.totalPages = 0;
         state.currentPage = -1;
         state.all = [];
+    },
+    deleteReviewMutation(state, review){
+        let id = parseInt(review);
+        let i = state.all.findIndex(f => f.id===id);
+        state.all.splice(i, 1);
     },
     getReviewPageMutation(state, reviews){
         const  targetReviews = state.all.concat(reviews);
