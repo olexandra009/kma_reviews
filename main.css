@@ -1,0 +1,13 @@
+.header-text{
+    font-size: 1.1em;
+}
+
+.left-nav a.nav-link{
+    color: #343a40;
+  }
+
+.left-nav a.nav-link.active{
+    color: #343a40;
+    font-weight: bold;
+
+}

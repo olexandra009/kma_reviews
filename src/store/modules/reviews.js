@@ -38,6 +38,7 @@ const actions = {
         else if(facultyId) response = await userApi.getPagedReviewsByFaculty(state.currentPage+1, facultyId);
         else response = await userApi.getPagedReviews(state.currentPage+1);
         console.log(response);
+        console.log("IN ACTION");
         const data = await response.json();
        //change faculty
         // change teacher
@@ -46,13 +47,16 @@ const actions = {
 
         state.totalPages =  data.totalPages;
         state.currentPage =  Math.min(data.currentPage, data.totalPages - 1);
-        commit('getReviewPageMutation', data.reviews)
+        //commit('getReviewPageMutation', data.reviews);
+        commit('getReviewPageMutation', data)
     }
 };
 
 
 const mutations ={
     addReviewMutation(state, review){
+        console.log("IN Mutation");
+        console.log(review);
         state.all = [
             review,
             ...state.all

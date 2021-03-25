@@ -10,11 +10,17 @@
 
                 <b-navbar-toggle target="nav-collapse"/>
                 <b-collapse id="nav-collapse" is-nav>
-                    <b-navbar-nav class="ml-auto">
+                    <b-navbar-nav class="ml-auto d-lg-flex d-md-none">
                         <b-nav-item class="p-3" ><router-link class="text-light" to="/info"><b-icon icon="info-circle" scale="2,5" variant="light"/></router-link></b-nav-item>
                         <b-nav-item to="/login" class="p-3">
                             <b-icon icon="box-arrow-in-right" scale="2,5" variant="light"/>
                             <div>Вхід</div>
+                        </b-nav-item>
+                    </b-navbar-nav>
+                    <b-navbar-nav class="d-lg-none d-md-block">
+                        <b-nav-item class="p-3" ><router-link class="text-light" to="/info"><span class="mr-4"><b-icon icon="info-circle" scale="2" variant="light"/></span>Інформація</router-link></b-nav-item>
+                        <b-nav-item to="/login" class="p-3">
+                            <span class="mr-4"><b-icon icon="box-arrow-in-right" scale="2,5" variant="light"/></span><span>Вхід</span>
                         </b-nav-item>
                     </b-navbar-nav>
                 </b-collapse>

@@ -4,13 +4,12 @@ import teacher from "../store/modules/teacher";
 
 import Vue from "vue";
 import VueResource from 'vue-resource';
-import axios from "axios";
 Vue.use(VueResource);
 
 export default {
     async getPagedReviews(page){
         try {
-            let res = await Vue.http.get(baseApi.baseUrl+'/review/all');
+            let res = await Vue.http.get(baseApi.baseUrl+'/review/all?teacher_id=1');
             console.log(res);
             return res
         } catch(error){
