@@ -2,7 +2,7 @@
     <b-container>
         <b-form v-on:submit.prevent="newReview" class="mb-3">
             <b-input-group>
-                <b-input  v-model="newName" type="text" required/>
+                <b-input  v-model="newName" placeholder="Введіть назву факультету" type="text" required/>
                 <b-input-group-append>
                     <b-button type="submit" variant="info">Додати</b-button>
                 </b-input-group-append>

@@ -2,7 +2,7 @@
     <b-container>
         <b-form v-on:submit.prevent="newTeacher" class="mb-3">
             <b-input-group>
-                <b-input  v-model="name" type="text" required/>
+                <b-input  v-model="name" placeholder="Введіть ПІБ викладача" type="text" required/>
                 <b-form-select required v-model="selectedFaculty" :options="facultyOptions" id="faculty"/>
                 <b-input-group-append>
                     <b-button type="submit" variant="info">Додати</b-button>
