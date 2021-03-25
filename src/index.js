@@ -15,7 +15,9 @@ import SingUp from "./components/login-sinup-module/SingUp.vue";
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import AdminDisplay from "./components/admin-module/AdminDisplay.vue";
+import FacultyMenu from "./components/admin-module/FacultyMenu.vue";
 
 
 
@@ -35,9 +37,11 @@ const router = new VueRouter( {
                 {path: '/', component: Login},
                 {path: '/singup', component: SingUp}
             ]},
-        {path: '/admin', component: AdminDisplay},
+        {path: '/admin', component: AdminDisplay,
+            children:[
+                {path: '/admin/faculty', component: FacultyMenu},
+            ]},
         {path: '/admin/users', component: AdminDisplay},
-        {path: '/admin/faculty', component: AdminDisplay},
         {path: '/admin/teacher', component: AdminDisplay},
     ]
 });

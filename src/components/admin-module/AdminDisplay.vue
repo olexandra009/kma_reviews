@@ -1,7 +1,7 @@
 <template>
     <b-container class="ml-0 pl-0 mt-1">
         <b-row>
-            <b-col md="3">
+            <b-col md="3" class="bg-light">
                 <div class="min-vh-100 p-0 ml-0 bg-light">
                     <div class="div-nav">
                         <b-nav class="text-dark p-0 header-text left-nav">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </b-col>
-            <b-col md="9">
+            <b-col md="6">
                 <router-view/>
             </b-col>
         </b-row>
@@ -22,7 +22,7 @@
 
 <script>
     export default {
-        name: "AdminDisplay"
+        name: "AdminDisplay",
     }
 </script>
 
