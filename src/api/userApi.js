@@ -10,8 +10,18 @@ export default {
     async getPagedReviews(page){
         try {
             let res = await Vue.http.get(baseApi.baseUrl+'/review/all?teacher_id=1');
+            console.log("API");
             console.log(res);
-            return res
+            let response = res.body;
+            console.log(response);
+            for (let r of response) {
+               let resT = await Vue.http.get(baseApi.baseUrl+'/teacher?teacher_id='+r.teacherId);
+                r.teacher = resT.body;
+            }
+            console.log(response);
+            console.log("API");
+            return response.reverse();
+
         } catch(error){
             console.log(error);
         }
@@ -80,12 +90,13 @@ export default {
     },
 
     async postNewReview(message){
-        console.log("IN API");
-        console.log(message);
-        let options = { emulateJSON: true };
-        let res = await Vue.http.post(baseApi.postReview,  message, options);
-
-      return res;
+      //  let options = { emulateJSON: true };
+        message.sendTime = new Date();
+        let res = await Vue.http.post(baseApi.postReview,  message /*options*/);
+        let teacher = await Vue.http.get(baseApi.baseUrl+'/teacher?teacher_id='+message.teacherId);
+        let result = res.body;
+        result.teacher = teacher.body;
+        return result;
     }
 
 }

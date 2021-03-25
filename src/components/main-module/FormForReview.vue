@@ -51,9 +51,10 @@
         methods:{
             SubmitReview:
                 async function(event){
+                console.log(this.selectedTeacher);
                 const review = {
                     text : this.review,
-                    teacher: this.selectedTeacher,
+                    teacherId: this.selectedTeacher,
                 };
                 console.log(review);
                 let bol = await this.$store.dispatch('reviews/addReviewAction', {'review': review});

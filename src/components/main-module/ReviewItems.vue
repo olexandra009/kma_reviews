@@ -4,7 +4,7 @@
             <b-card class="bg-light"  style="width: 100%">
                 <b-card-body>
                     <b-card-title>{{review.teacher.name}}</b-card-title>
-                    <b-card-sub-title>{{ review.sendTime }}</b-card-sub-title>
+                    <b-card-sub-title>{{ getDate(review.sendTime)}}</b-card-sub-title>
                     <b-card-text>{{ review.text }}</b-card-text>
                 </b-card-body>
             </b-card>
@@ -28,7 +28,11 @@
 
         }),
         methods:{
-            ...Vuex.mapActions(['getReviews'])
+            ...Vuex.mapActions(['getReviews']),
+            getDate(str){
+                let d = new Date(str+"Z");
+                return d.toLocaleString();
+            },
         },
         mounted() {
             this.$store.dispatch("reviews/getReviews", {'teacherId': this.teacherId,

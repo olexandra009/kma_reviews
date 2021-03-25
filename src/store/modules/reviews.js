@@ -13,12 +13,8 @@ const getters = {
 
 const actions = {
     async addReviewAction({commit, state}, {review}) {
-        console.log("IN ACTION:: ");
-        console.log(review);
         let result = await userApi.postNewReview(review);
-        console.log(result);
-        const data = await result.json();
-        console.log(data);
+        const data = result;
         let notAddToCurrent =  state.techId
             && data.teacher.id !== state.techId
             || state.facId
@@ -39,14 +35,12 @@ const actions = {
         else response = await userApi.getPagedReviews(state.currentPage+1);
         console.log(response);
         console.log("IN ACTION");
-        const data = await response.json();
+        const data = response;
        //change faculty
         // change teacher
         state.techId = teacherId;
         state.facId = facultyId;
-
-        state.totalPages =  data.totalPages;
-        state.currentPage =  Math.min(data.currentPage, data.totalPages - 1);
+        console.log(data);
         //commit('getReviewPageMutation', data.reviews);
         commit('getReviewPageMutation', data)
     }
@@ -55,12 +49,12 @@ const actions = {
 
 const mutations ={
     addReviewMutation(state, review){
-        console.log("IN Mutation");
+        console.log("IN ADD Mutation");
         console.log(review);
+        //state.all = review;
         state.all = [
-            review,
-            ...state.all
-
+             review,
+             ...state.all
         ]
     },
     resetPageMutation(state){
