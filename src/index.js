@@ -18,6 +18,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import AdminDisplay from "./components/admin-module/AdminDisplay.vue";
 import FacultyMenu from "./components/admin-module/FacultyMenu.vue";
+import TeacherMenu from "./components/admin-module/TeacherMenu.vue";
 
 
 
@@ -40,9 +41,10 @@ const router = new VueRouter( {
         {path: '/admin', component: AdminDisplay,
             children:[
                 {path: '/admin/faculty', component: FacultyMenu},
+                {path: '/admin/teacher', component: TeacherMenu},
             ]},
         {path: '/admin/users', component: AdminDisplay},
-        {path: '/admin/teacher', component: AdminDisplay},
+
     ]
 });
 

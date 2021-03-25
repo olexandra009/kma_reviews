@@ -26,7 +26,17 @@ export default {
 
     async addTeacher(data){
         try {
+
             let res = await Vue.http.post(baseApi.baseUrl + '/teacher', data);
+            let faculty = await Vue.http.get(baseApi.baseUrl+"/faculty/all");
+            let name = '';
+            faculty.body.forEach(a=> {
+                if(a.id == res.body.facultyId)
+                    name = a.name;
+            });
+
+            res.body.facultyName = name;
+
             return res.body;
         }catch(e){
             console.log(e);
@@ -35,7 +45,7 @@ export default {
     },
     async deleteTeacher(teacher_id){
         try {
-            let res = await Vue.http.delete(baseApi.baseUrl + 'teacher?teacher_id='+teacher_id);
+            let res = await Vue.http.delete(baseApi.baseUrl + '/teacher?teacher_id='+teacher_id);
             return true;
         }catch(e){
             console.log(e);

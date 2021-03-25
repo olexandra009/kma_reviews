@@ -35,50 +35,67 @@ export default {
         Vue.http.get(baseApi.getReviews, {params: {page:page, faculty_id:facultyId}}),
 
     async getListOfAllTeacher(){
+        console.log("IN TEACHER")
+        let faculty = (await this.getListOfAllFaculty()).body;
+        console.log(faculty);
+        console.log('Array');
         let res=[];
-        let res2=[];
-        let res3=[];
-        let res4=[];
-        let res5=[];
-        let res6=[];
-        try{
-           let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=1');
-            console.log(response);
-           res = response.body;
-        }catch(error){
-            console.log(error);
+        for(let l = 0; l<faculty.length; l++){
+            try {
+                let response = await Vue.http.get(baseApi.getAllTeacher + '?faculty_id=' + faculty[l].id);
+                let body = response.body;
+                body.forEach(t => t.facultyName = faculty[l].name);
+                res = res.concat(body);
+            }catch(error){
+                console.log(error);
+            }
+
         }
-        try{
-            let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=2');
-            res2 = response.body;
-        }catch(error){
-            console.log(error);
-        }
-        try{
-            let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=3');
-            res3 = response.body;
-        }catch(error){
-            console.log(error);
-        }
-        try{
-            let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=4');
-            res4 = response.body;
-        }catch(error){
-            console.log(error);
-        }
-        try{
-            let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=5');
-            res5 = response.body;
-        }catch(error){
-            console.log(error);
-        }
-        try{
-            let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=6');
-            res6 = response.body;
-        }catch(error){
-            console.log(error);
-        }
-           return res.concat(res2).concat(res3).concat(res4).concat(res5).concat(res6);
+        return res;
+        // let res2=[];
+        // let res3=[];
+        // let res4=[];
+        // let res5=[];
+        // let res6=[];
+        // try{
+        //    let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=1');
+        //     console.log(response);
+        //    res = response.body;
+        //  //  res.forEach(r=> r.facultyName = );
+        // }catch(error){
+        //     console.log(error);
+        // }
+        // try{
+        //     let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=2');
+        //     res2 = response.body;
+        // }catch(error){
+        //     console.log(error);
+        // }
+        // try{
+        //     let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=3');
+        //     res3 = response.body;
+        // }catch(error){
+        //     console.log(error);
+        // }
+        // try{
+        //     let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=4');
+        //     res4 = response.body;
+        // }catch(error){
+        //     console.log(error);
+        // }
+        // try{
+        //     let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=5');
+        //     res5 = response.body;
+        // }catch(error){
+        //     console.log(error);
+        // }
+        // try{
+        //     let response = await Vue.http.get(baseApi.getAllTeacher+'?faculty_id=6');
+        //     res6 = response.body;
+        // }catch(error){
+        //     console.log(error);
+        // }
+        //    return res.concat(res2).concat(res3).concat(res4).concat(res5).concat(res6);
 
         // let res = await Vue.http.get(baseApi.getAllTeacher);
         // return res;

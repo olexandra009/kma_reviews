@@ -1,4 +1,5 @@
 import userApi from "../../api/userApi";
+import adminApi from "../../api/adminApi";
 
 const state = {teacher: []};
 const getters = {
@@ -9,13 +10,26 @@ const getters = {
         return res;
     },
 
+
 };
 const actions = {
     async getTeacherList({commit, state}){
         let response = await userApi.getListOfAllTeacher();
         //const data = await response.json();
         commit('getTeacherListMutation', response);
-    }
+    },
+    async deleteTeacherAction({commit,state}, {id}){
+        let response = await adminApi.deleteTeacher(id);
+        if(response===false) return false;
+        commit('deleteTeacherMutation', id);
+        return true;
+    },
+    async addTeacher({commit, state},{teacher}){
+        let response = await adminApi.addTeacher(teacher);
+        if(response===null) return false;
+        commit('addTeacherMutation', response);
+        return true;
+    },
 };
 const mutations = {
     getTeacherListMutation(state, teachers){
@@ -29,7 +43,16 @@ const mutations = {
                 a[t.id] = 1
             }
         }
-    }
+    },
+    addTeacherMutation(state, teacher){
+
+        state.teacher.push(teacher);
+    },
+    deleteTeacherMutation(state, teacher){
+        let id = parseInt(teacher);
+        let i = state.teacher.findIndex(f => f.id===id);
+        state.teacher.splice(i, 1);
+    },
 };
 
 export default {
